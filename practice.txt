@@ -3,11 +3,9 @@ I love cricket..
 Diggibyte
 added kesavan name.
 add new name:kesav nair
-<<<<<<< HEAD
 kishore name added.
 manav
 
-=======
->>>>>>> parent of d38da06 (added the new name kishore in practice.txt)
+
 
 
