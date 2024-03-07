@@ -27,7 +27,7 @@ list_dict =dict(name="kesvan", age=30)
 print(list_dict)
 print(type(list_dict))
 
-# type conversion
+# type conversion/casting
 
 # convert one type to another type
 
@@ -43,3 +43,11 @@ print(type(value_float))
 
 import random
 print(random.randrange(0,9))
+
+types_cast1=int(1)
+types_cast2=int(1.4)
+types_cast3=int("4")
+
+print(types_cast1)
+print(types_cast2)
+print(types_cast3)
