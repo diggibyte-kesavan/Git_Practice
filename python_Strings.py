@@ -9,7 +9,7 @@ else:
     print("not a unique word")
 
 
-set_word = "kes"
+set_word = "kesa"
 
 if len(set_word)==len(set(set_word)):
     print("it is a unique word")
