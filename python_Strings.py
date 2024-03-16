@@ -63,4 +63,6 @@ str2 = "kumar"
 str_add = str1 + " " + str2  # add the space
 print(str_add)
 
-
+str_count = "i play footbal,footbal is my favorite game"
+c=str_count.count("footbal")
+print(c)
