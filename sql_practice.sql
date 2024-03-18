@@ -111,3 +111,66 @@ select userid as customer_name from users where userid like 'M%';
 --13 .Find the Distinct customer Id of each customer
 
 select distinct userid from users;
+
+--14 .Change the Column name from product table as price_value from price
+
+exec sp_rename 'product.price', 'price_value', 'column';
+
+-- 15.Change the Column value product_name – Ipad to Iphone from product table
+
+update product set product_name='Iphone' where product_name='Ipad';
+
+--16.Change the table name of gold_member_users to gold_membership_users
+
+exec sp_rename 'gold_member_users' ,'gold_membership_users';
+
+--see the tables after changing the table name
+
+select name from sys.tables;
+
+--17. Create a new column  as Status in the table crate above gold_membership_users  the Status values should be 2 Yes and No if the user is gold member, then status should be Yes else No
+
+ALTER TABLE gold_membership_users
+ADD Status VARCHAR(3);
+
+UPDATE gold_membership_users
+SET Status = 'Yes';
+
+--18.Delete the users_ids 1,2 from users table and roll the back changes once both the rows are deleted one by one mention the result when performed roll back.
+
+-- start a transaction
+BEGIN TRANSACTION;
+
+-- delete first record
+delete from users where userid='John';
+
+-- rollback the transaction
+ROLLBACK TRANSACTION;
+
+-- Check if the first record is still there
+SELECT * FROM users;
+
+BEGIN TRANSACTION;
+
+-- Delete second record
+DELETE FROM users WHERE userid = 'Michel';
+
+ROLLBACK TRANSACTION;
+
+-- Check the record
+SELECT * FROM users;
+
+--19.Insert one more record as same (3,'Laptop',330) as product table
+
+INSERT INTO product (product_id, product_name, price_value) VALUES
+(3, 'Laptop', 330);
+
+select * from product;
+
+--20. Write a query to find the duplicates in product table
+
+SELECT product_id, product_name, price_value, COUNT(*)
+FROM product
+GROUP BY product_id, product_name, price_value
+HAVING COUNT(*) > 1;
+
