@@ -83,4 +83,31 @@ JOIN sales ON users.userid = sales.userid
 JOIN product ON sales.product_id = product.product_id
 GROUP BY sales.userid, product_name;
 
+--9. What is the most purchased item of each customer and how many times the customer has purchased it
 
+SELECT userid, Count(product.product_name) AS item_count
+FROM sales
+JOIN product ON sales.product_id = product.product_id
+GROUP BY userid
+ORDER BY item_count DESC;
+
+--10. Find out the customer who is not the gold_member_user
+
+select userid from users where userid not in(select userid from gold_member_users);
+
+--11 .What is the amount spent by each customer when he was the gold_member user
+
+SELECT g.userid, SUM(p.price) AS total_amount_spent
+FROM gold_member_users g
+JOIN sales s ON g.userid = s.userid
+JOIN product p ON s.product_id = p.product_id
+GROUP BY g.userid;
+
+--12 Find the Customers names whose name starts with M
+-- using wildcards
+
+select userid as customer_name from users where userid like 'M%';
+
+--13 .Find the Distinct customer Id of each customer
+
+select distinct userid from users;
